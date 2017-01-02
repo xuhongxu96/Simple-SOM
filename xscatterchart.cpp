@@ -3,7 +3,7 @@
 #include <QDebug>
 
 XScatterChart::XScatterChart(unsigned int w, unsigned int h, QWidget *parent)
-    : QWidget(parent), w(w), h(h), buffer(QSize(w * CELL_SIZE + LIST_WIDTH, h * CELL_SIZE), QImage::Format_ARGB32)
+    : QWidget(parent), w(w), h(h), buffer(QSize(w * CELL_SIZE + LIST_WIDTH, h * CELL_SIZE), QImage::Format_ARGB32), n(0)
 {
 }
 
@@ -21,6 +21,7 @@ void XScatterChart::showSOM(XSOM<char> &som)
         }
     }
     this->som = &som;
+    n = 0;
 }
 
 void XScatterChart::addTip(const QString &name, std::pair<unsigned int, unsigned int> pt)
